@@ -2,20 +2,29 @@ using UnityEngine;
 
 public class PowerCommand : ICommand {
 
-    GameObject _lamp;
-    bool active;
+    Lamp _lamp;
 
-    public PowerCommand(GameObject lamp) {
+    public PowerCommand(Lamp lamp) {
         _lamp = lamp;
-        active = _lamp.GetComponent<MeshRenderer>().material.IsKeywordEnabled("_EMISSION");
     }
 
     public void execute() {
-        if (active) {
-            _lamp.GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
-        } else {
-            _lamp.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
-        }
+        _lamp.SetPower();
+    }
+
+}
+
+
+public class ChangeColorCommand : ICommand {
+
+    Lamp _lamp;
+
+    public ChangeColorCommand(Lamp lamp) {
+        _lamp = lamp;
+    }
+
+    public void execute() {
+        _lamp.SetRandomColor();
     }
 
 }
