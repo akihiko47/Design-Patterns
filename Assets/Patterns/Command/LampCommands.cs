@@ -22,21 +22,21 @@ public class PowerCommand : ICommand {
 public class ChangeColorCommand : ICommand {
 
     Lamp _lamp;
-    Color prevColor;
+    Color _prevColor;
 
     public ChangeColorCommand(Lamp lamp) {
         _lamp = lamp;
     }
 
     public void Execute() {
-        prevColor = _lamp.GetColor();
+        _prevColor = _lamp.GetColor();
 
         Color randomColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         _lamp.SetColor(randomColor);
     }
 
     public void Redo() {
-        _lamp.SetColor(prevColor);
+        _lamp.SetColor(_prevColor);
     }
 
 }

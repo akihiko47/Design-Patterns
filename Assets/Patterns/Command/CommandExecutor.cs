@@ -2,20 +2,20 @@ using System.Collections.Generic;
 
 public class CommandsExecutor {
 
-    Stack<ICommand> commandList;
+    private Stack<ICommand> _commandsStack;
 
     public CommandsExecutor() {
-        commandList = new Stack<ICommand>();
+        _commandsStack = new Stack<ICommand>();
     }
 
     public void ExecuteCommand(ICommand command) {
         command.Execute();
-        commandList.Push(command);
+        _commandsStack.Push(command);
     }
 
     public void RedoCommand() {
-        if (commandList.Count > 0) {
-            ICommand redoCommand = commandList.Pop();
+        if (_commandsStack.Count > 0) {
+            ICommand redoCommand = _commandsStack.Pop();
             redoCommand.Redo();
         }
     }
