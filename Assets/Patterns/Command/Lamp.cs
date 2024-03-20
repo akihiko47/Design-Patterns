@@ -14,9 +14,12 @@ public class Lamp : MonoBehaviour{
         }
     }
 
-    public void SetRandomColor() {
-        Color randomColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", randomColor);
+    public void SetColor(Color color) {
+        GetComponent<Renderer>().material.SetColor("_EmissionColor", color);
+    }
+
+    public Color GetColor() {
+        return GetComponent<Renderer>().material.GetColor("_EmissionColor");
     }
 
 }
