@@ -5,18 +5,18 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour, IObserver {
 
     [SerializeField]
-    Subject playerSubject;
+    Player player;
 
     private void OnEnable() {
-        playerSubject.AddObserver(this);
+        player.OnSpaceActionEvent += OnNotify;
     }
 
     private void OnDisable() {
-        playerSubject.RemoveObserver(this);
+        player.OnSpaceActionEvent -= OnNotify;
     }
 
     public void OnNotify() {
-        Debug.Log("Playing jump sound");
+        Debug.Log("Playing jump sound (delegates version)");
     }
 
 }

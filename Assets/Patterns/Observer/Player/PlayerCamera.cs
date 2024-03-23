@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour, IObserver {
 
-    [SerializeField]
-    Subject playerSubject;
+    [SerializeField]    Subject playerSubject;
 
     private void OnEnable() {
         playerSubject.AddObserver(this);
